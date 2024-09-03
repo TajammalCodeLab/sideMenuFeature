@@ -66,7 +66,8 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func signUpBtn(_ sender: UIButton) {
-        Utils.showAlert("Alter", "COMMING SOON", vc: self)
+        let vcon = Storyboards.Auth.instantiateViewController(identifier: Identifiers.SIGNUP_ID)
+        self.navigationController?.pushViewController(vcon, animated: true)
     }
     
 }

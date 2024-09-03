@@ -7,23 +7,78 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class SignUpViewController: BaseViewController {
+    
+    // MARK: - IBoutLet -
+    @IBOutlet weak var contentViewContainer: UIView!
+    @IBOutlet weak var passwordView: CustomTextField!
+    @IBOutlet weak var emailView: CustomTextField!
+    @IBOutlet weak var confirmpasswordView: CustomTextField!
+    
+    @IBOutlet weak var emailTxtField: UITextField!
+    @IBOutlet weak var passwordTxtField: UITextField!{
+        didSet{
+            passwordTxtField.isSecureTextEntry = true
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var confirmPasswordTxtfield: UITextField!{
+        didSet{
+            confirmPasswordTxtfield.isSecureTextEntry = true
+        }
     }
-    */
-
+    
+    @IBOutlet weak var signUpBtn: UIButton!{
+        didSet{
+            signUpBtn.layer.cornerRadius = 5
+            signUpBtn.layer.shadowOpacity = 0.3
+            signUpBtn.layer.shadowRadius = 5
+        }
+    }
+    @IBOutlet weak var goBackTosignIn: UIButton!{
+        didSet{
+            goBackTosignIn.layer.cornerRadius = 5
+            goBackTosignIn.layer.shadowOpacity = 0.1
+            goBackTosignIn.layer.shadowRadius = 5
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: - life cycle -
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateScreenUI()
+        
+    }
+    override func viewWillAppear(_ animated: Bool){
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    
+    private func updateScreenUI(){
+        CustomCardShadow.shadowadding(cardView: contentViewContainer)
+        updateTextField(parentView: emailView, label: "Email", textField: emailTxtField, isPassword: false)
+        updateTextField(parentView: passwordView, label: "Password", textField: passwordTxtField, isPassword: true)
+        updateTextField(parentView: confirmpasswordView, label: "Confirm Password", textField: confirmPasswordTxtfield, isPassword: true)
+        
+    }
+    
+    
+    
+    @IBAction func backToSignInSC(_ sender: Any) {
+        self.popToRootViewController()
+    }
+    
+    @IBAction func signUpBtn(_ sender: UIButton) {
+        
+    }
+    
+    
 }

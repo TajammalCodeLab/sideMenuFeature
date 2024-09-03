@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,7 +18,7 @@
                         <subviews>
                             <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="1NE-Fy-83G">
                                 <rect key="frame" x="178" y="652" width="37" height="37"/>
-                                <color key="color" name="AccentColor"/>
+                                <color key="color" systemColor="groupTableViewBackgroundColor"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch Screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEg-sK-XoE">
                                 <rect key="frame" x="43" y="400" width="307" height="52"/>
@@ -259,38 +258,6 @@
                                             <constraint firstItem="svV-uZ-MPS" firstAttribute="centerY" secondItem="dnm-Su-yee" secondAttribute="centerY" multiplier="1.09" id="w8d-hg-agE"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuS-lY-k82">
-                                        <rect key="frame" x="10" y="279.99999999999994" width="150" height="45"/>
-                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="Cmg-qK-CWz"/>
-                                            <constraint firstAttribute="width" constant="150" id="ibY-3D-Xc4"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Sign Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="logInBtn:" destination="oRG-ak-CNP" eventType="touchUpInside" id="Pre-9c-8TA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPu-Vr-yJ2">
-                                        <rect key="frame" x="193" y="279.99999999999994" width="150" height="45"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="NgZ-p9-gGm"/>
-                                            <constraint firstAttribute="height" constant="45" id="W04-2w-4Z9"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Go Back">
-                                            <color key="titleColor" systemColor="systemGrayColor"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="signUpBtn:" destination="oRG-ak-CNP" eventType="touchUpInside" id="gar-mL-7RU"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2od-1f-Kje" userLabel="Confirm PW View">
                                         <rect key="frame" x="10" y="165" width="333" height="60"/>
                                         <subviews>
@@ -318,6 +285,40 @@
                                             <constraint firstItem="70V-mC-11E" firstAttribute="top" secondItem="2od-1f-Kje" secondAttribute="top" constant="5" id="zEs-Zn-AfP"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuS-lY-k82">
+                                        <rect key="frame" x="10" y="279.99999999999994" width="150" height="45"/>
+                                        <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Cmg-qK-CWz"/>
+                                            <constraint firstAttribute="width" constant="150" id="ibY-3D-Xc4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Sign Up">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logInBtn:" destination="oRG-ak-CNP" eventType="touchUpInside" id="Pre-9c-8TA"/>
+                                            <action selector="signUpBtn:" destination="din-q9-vXQ" eventType="touchUpInside" id="Hmp-b2-W3q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPu-Vr-yJ2">
+                                        <rect key="frame" x="193" y="279.99999999999994" width="150" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="NgZ-p9-gGm"/>
+                                            <constraint firstAttribute="height" constant="45" id="W04-2w-4Z9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Go Back">
+                                            <color key="titleColor" systemColor="systemGrayColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backToSignInSC:" destination="din-q9-vXQ" eventType="touchUpInside" id="eEN-0m-Ppg"/>
+                                            <action selector="signUpBtn:" destination="oRG-ak-CNP" eventType="touchUpInside" id="gar-mL-7RU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -338,14 +339,34 @@
                                     <constraint firstAttribute="trailing" secondItem="NmQ-0t-Zc1" secondAttribute="trailing" constant="10" id="yLQ-m3-jTT"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNN-li-hMZ">
+                                <rect key="frame" x="20" y="194.66666666666666" width="353" height="59"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="45"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SNI-Wl-qhg"/>
                         <color key="backgroundColor" systemColor="systemGray2Color"/>
                         <constraints>
                             <constraint firstItem="YdT-8r-PGQ" firstAttribute="centerX" secondItem="SNI-Wl-qhg" secondAttribute="centerX" id="ATo-wp-jyO"/>
                             <constraint firstItem="YdT-8r-PGQ" firstAttribute="centerY" secondItem="SNI-Wl-qhg" secondAttribute="centerY" id="OVy-Pf-Mog"/>
+                            <constraint firstItem="YdT-8r-PGQ" firstAttribute="top" secondItem="eNN-li-hMZ" secondAttribute="bottom" constant="10" id="bdU-yN-xAF"/>
+                            <constraint firstItem="eNN-li-hMZ" firstAttribute="leading" secondItem="YdT-8r-PGQ" secondAttribute="leading" id="rhb-Ap-I0q"/>
+                            <constraint firstItem="eNN-li-hMZ" firstAttribute="trailing" secondItem="YdT-8r-PGQ" secondAttribute="trailing" id="wnq-rm-7uJ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTxtfield" destination="70V-mC-11E" id="SjF-As-wsg"/>
+                        <outlet property="confirmpasswordView" destination="2od-1f-Kje" id="L5E-Xh-ceu"/>
+                        <outlet property="contentViewContainer" destination="YdT-8r-PGQ" id="ZdZ-na-hzp"/>
+                        <outlet property="emailTxtField" destination="Afe-td-iy7" id="Ohp-Lr-qw2"/>
+                        <outlet property="emailView" destination="NmQ-0t-Zc1" id="BDd-Us-KlY"/>
+                        <outlet property="goBackTosignIn" destination="NPu-Vr-yJ2" id="Rid-a6-ADO"/>
+                        <outlet property="passwordTxtField" destination="mK7-0o-U8L" id="2yl-d0-Vc8"/>
+                        <outlet property="passwordView" destination="dnm-Su-yee" id="Zd0-A4-XDb"/>
+                        <outlet property="signUpBtn" destination="tuS-lY-k82" id="2eg-MB-bZY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pte-xw-crO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -374,9 +395,9 @@
         <image name="checkmark.shield" catalog="system" width="128" height="119"/>
         <image name="envelope" catalog="system" width="128" height="85"/>
         <image name="lock.shield" catalog="system" width="128" height="119"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

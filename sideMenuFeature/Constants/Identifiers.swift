@@ -10,4 +10,6 @@ class Identifiers{
     static let LOGIN_ID = "LoginscreenID"
     static let DASHBOARD_ID = "DashboardID"
     static let SIGNUP_ID = "SignupscreenID"
+    static let ROOTMENU = "rootID"
+    
 }

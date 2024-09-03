@@ -17,7 +17,7 @@ class AuthService {
         if Utils.isValidEmail(email) && Utils.isValidPassword(password){
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
                 guard let error = error else {
-                    let vcon = Storyboards.Dashboard.instantiateViewController(identifier: Identifiers.DASHBOARD_ID)
+                    let vcon = Storyboards.Dashboard.instantiateViewController(identifier: Identifiers.ROOTMENU)
                     vc.navigationController?.pushViewController(vcon, animated: true)
                     
                     return
