@@ -11,17 +11,20 @@ import SideMenu
 
 class MenuTableViewController: UITableViewController {
     
+    // MARK: IBOutlet
     @IBOutlet var tableViewMenu: UITableView!
     
+    // MARK: Variables
     var MenuDataArr = [MenuCellData]()
     weak var delegate: MenuSelectionDelegate?
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateDataArr()
     }
     
-    
+    // MARK: Methods
     private func updateDataArr() {
         tableViewMenu.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: Identifiers.MENU_CELL_ID)
         MenuDataArr.append(MenuCellData(screenName: "Info", screenImage: "info.windshield"))
@@ -32,6 +35,7 @@ class MenuTableViewController: UITableViewController {
     
 }
 
+// MARK: Extention
 extension MenuTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -11,9 +11,13 @@ import MapKit
 
 class LocationMenuViewController: UIViewController {
 
+    // MARK: IBOutlet
     @IBOutlet weak var map: MKMapView!
-    
+    @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var locationName: UILabel!
     var locationManager: CLLocationManager?
+    
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,10 +25,21 @@ class LocationMenuViewController: UIViewController {
         /// For location
         setupLocationManager()
     }
+    
+    // MARK: override function
+    override func viewWillAppear(_ animated: Bool){
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
     // MARK: Methods
     func setupLocationManager() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
+        
         
         checkIfLocationServicesEnable()
     }
@@ -79,6 +94,23 @@ extension LocationMenuViewController: CLLocationManagerDelegate{
         let region = MKCoordinateRegion(center: locations[0].coordinate, span: span)
         map.setRegion(region, animated: true)
         map.showsUserLocation = true
+        let userLocation :CLLocation = locations[0] as CLLocation
+        let geocoder = CLGeocoder()
+            geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+                if (error != nil){
+                    print("error in reverseGeocode")
+                }
+                let placemark = placemarks! as [CLPlacemark]
+                if placemark.count>0{
+                    let placemark = placemarks![0]
+                    print(placemark.locality!)
+                    print(placemark.administrativeArea!)
+                    print(placemark.country!)
+
+                    self.locationName.text = "\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+                }
+            }
+        
     }
     
 }
