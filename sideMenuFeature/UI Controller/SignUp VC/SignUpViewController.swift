@@ -77,6 +77,17 @@ class SignUpViewController: BaseViewController {
     }
     
     @IBAction func signUpBtn(_ sender: UIButton) {
+        guard !(emailTxtField.text?.isEmpty ?? true), !(passwordTxtField.text?.isEmpty ?? true) else {
+            Utils.showAlert("Alert", "Email or password is empty", vc: self)
+            return
+        }
+        if passwordTxtField.text == confirmPasswordTxtfield.text {
+            AuthService.shared.signUp(email: emailTxtField.text ?? "", password: passwordTxtField.text ?? "", vc: self)
+        }
+        else {
+            Utils.showAlert("Alert", "password not matched", vc: self)
+        }
+        
         
     }
     
