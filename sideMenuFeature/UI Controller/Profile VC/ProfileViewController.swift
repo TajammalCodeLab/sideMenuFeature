@@ -9,12 +9,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
+    // MARK: IBOutlet
     @IBOutlet weak var emaillabel: UILabel!
     @IBOutlet weak var showPasswordLabel: UIButton!
+    @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var passwordlabel: UILabel!
-    var isPasswordVisible = false
     
+    // MARK: Variable
+    var isPasswordVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +24,18 @@ class ProfileViewController: UIViewController {
         
         
     }
-    func updatedLabels(){
-        emaillabel.text = AuthService.UserDefaultsData.string(forKey: "Email")
-        let password = AuthService.UserDefaultsData.string(forKey: "Password") ?? ""
-        passwordlabel.text = String(repeating: "*", count: password.count)
+    // MARK: override function
+    override func viewWillAppear(_ animated: Bool){
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     
+    
+    // MARK: IBACTION
     @IBAction func showPassword(_ sender: UIButton) {
         isPasswordVisible.toggle()
         
@@ -44,6 +51,12 @@ class ProfileViewController: UIViewController {
             passwordlabel.text = String(repeating: "*", count: password.count)
             showPasswordLabel.setTitle("Show password", for: .normal)
         }
+    }
+    // MARK: Methods
+    func updatedLabels(){
+        emaillabel.text = AuthService.UserDefaultsData.string(forKey: "Email")
+        let password = AuthService.UserDefaultsData.string(forKey: "Password") ?? ""
+        passwordlabel.text = String(repeating: "*", count: password.count)
     }
     
 }
