@@ -9,40 +9,34 @@ import UIKit
 import Firebase
 import CoreLocation
 import MapKit
+import SideMenu
 
 class DashboardViewController: BaseViewController {
     
     // MARK: IBOutlet
-    @IBOutlet weak var collectionViewDB: UICollectionView!
     @IBOutlet weak var menuBtn: UIButton!
+    @IBOutlet weak var collectionViewDB: UICollectionView!
     @IBOutlet weak var pageIndicator: UIPageControl!
-    @IBOutlet weak var map: MKMapView!
+   
     
     // MARK: Variables
     var GRDNTimages = ["image_1","image_2","image_3","image_4","image_5" ]
     var currentIndex = 0
     var time: Timer?
-    var locationManager: CLLocationManager?
+    
     
     // MARK: life Cycle and override Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// For Side menu
-        menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         
         time = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideToRight), userInfo: nil, repeats: true)
         pageIndicator.numberOfPages = GRDNTimages.count
-        //timeForSlide()
         
         
-        /// For location
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        checkIfLocationServicesEnable()
-       
+        
+        
     }
-    
     override func viewWillAppear(_ animated: Bool){
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -50,12 +44,10 @@ class DashboardViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
+
     
     // MARK: IBAction
-    @IBAction func signOutBtn(_ sender: UIButton) {
-        try? Auth.auth().signOut()
-        self.popToRootViewController()
-    }
+    
     
     // MARK: OBJ
     @objc func slideToRight(){
@@ -71,13 +63,6 @@ class DashboardViewController: BaseViewController {
     // MARK: Methods
     private func timeForSlide(){
         Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(slideToRight), userInfo: nil, repeats: true)
-    }
-    
-    private func checkIfLocationServicesEnable(){
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager?.requestWhenInUseAuthorization()
-            locationManager?.startUpdatingLocation()
-        }
     }
     
 }
@@ -101,12 +86,5 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
 }
-extension DashboardViewController: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let region = MKCoordinateRegion(center: locations[0].coordinate, span: span)
-        map.setRegion(region, animated: true)
-        map.showsUserLocation = true
-    }
-}
+
 

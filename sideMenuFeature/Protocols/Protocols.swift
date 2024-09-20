@@ -18,8 +18,12 @@ protocol PackagesDelegates {
     func didImagePicker(imagePackage: UIImageView)
 }
 
+
 protocol bindingDataDelegate {
     func didSetDelegates(_ delegate: PackagesDelegates, with indexpath:IndexPath?)
 }
 
 
+protocol MenuSelectionDelegate: AnyObject {
+    func didTapMenuOption(_ menuItem: MenuCellData)
+}

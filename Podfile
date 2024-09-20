@@ -8,5 +8,6 @@ target 'sideMenuFeature' do
   # Pods for sideMenuFeature
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'SideMenu'
 
 end

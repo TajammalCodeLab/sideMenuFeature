@@ -35,7 +35,7 @@ class EntryViewController: UIViewController {
         if let currentUser = Auth.auth().currentUser {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.loadingIndicator.stopAnimating()
-                let dashboardVC = Storyboards.Dashboard.instantiateViewController(identifier: Identifiers.ROOTMENU)
+                let dashboardVC = Storyboards.Dashboard.instantiateViewController(identifier: Identifiers.DASHBOARD_ID)
                 self.navigationController?.pushViewController(dashboardVC, animated: true)
             }
         } else {
